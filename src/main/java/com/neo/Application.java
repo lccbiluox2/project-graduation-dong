@@ -3,6 +3,7 @@ package com.neo;
 import java.io.File;
 
 import org.apache.log4j.PropertyConfigurator;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -11,6 +12,7 @@ import com.neo.utils.PathUtils;
 
 @SpringBootApplication
 @EnableScheduling
+@MapperScan("com.neo.dao")  //@MapperScan("com.neo.mapper") 这个注解如果没有 dao接口就无法直接调用*-mapper.xml中的sql
 public class Application {
 
 	
@@ -30,9 +32,6 @@ public class Application {
 	 		  System.setProperty("logFilesPath", logFilesPath);
 	 		  System.out.println(System.getProperty("logFilesPath"));
 	 		  PropertyConfigurator.configure(System.getProperties());
-	
-	 		 
-	          
 	          
 	      }catch (Exception e){
 	          e.printStackTrace();
@@ -43,4 +42,17 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

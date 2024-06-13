@@ -17,6 +17,8 @@ public class WebConfiguration {
         return new RemoteIpFilter();
     }
     
+	
+	//自定义的过滤器
     @Bean
     public FilterRegistrationBean testFilterRegistration() {
 
@@ -28,6 +30,8 @@ public class WebConfiguration {
         registration.setOrder(1);
         return registration;
     }
+    
+    
     
     
 }

@@ -1,3 +1,5 @@
+<#import "freemarker.ftl" as com>
+
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
@@ -67,7 +69,7 @@ function serachRoad(){
 		<div class="item1"><a href="">留言板</a></div>
 		
 
-		<div class="item2"><a href="">经纪人登录</a></div>
+		<div class="item2"><a href="${AppUrl}/background/login">经纪人登录</a></div>
 		<div class="item2"><a href="">用户登录</a></div>
 		<div class="item2"><a href="">注册 </a></div>
 	</div>
@@ -237,7 +239,7 @@ function serachRoad(){
 	
 	
 	<div id="content"  src="www.ba" >
-			dsgvfsd
+			dsgvfsd ${AppUrl}
 	</div>
 	
 	

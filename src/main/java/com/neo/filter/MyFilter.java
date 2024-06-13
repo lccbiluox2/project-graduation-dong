@@ -33,7 +33,7 @@ public class MyFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) srequest;
 		System.out.println("this is MyFilter,url :"+request.getRequestURI());// /welcome
 		
-		System.out.println("this is MyFilter,url :"+request.getLocalAddr());// 0:0:0:0:0:0:0:1
+		/*System.out.println("this is MyFilter,url :"+request.getLocalAddr());// 0:0:0:0:0:0:0:1
 		System.out.println("this is MyFilter,url :"+request.getLocalName());//0:0:0:0:0:0:0:1
 		System.out.println("this is MyFilter,url :"+request.getLocalPort());//8080
 		System.out.println("this is MyFilter,url :"+request.getMethod());//GET
@@ -48,7 +48,7 @@ public class MyFilter implements Filter {
 		System.out.println("this is MyFilter,url :"+request.getServerPort());//8080
 		System.out.println("this is MyFilter,url :"+request.getServletPath());///welcome
 		System.out.println("this is MyFilter,url :"+request.getAttributeNames());//java.util.Collections$3@9cc5045
-		
+*/		
 		
 		
 		addWebClickCount();//
