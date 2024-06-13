@@ -5,245 +5,180 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
-	<link rel="stylesheet" href="/css/index.css" />
-	
 
-	<!-- 省市级联的js -->
-	<script src="/js/jquery-1[1].2.6.js" type="text/javascript"></script>
-	<script src="/js/jquery.provincesCity.js" type="text/javascript"></script>
-	<script src="/js/provincesdata.js" type="text/javascript"></script> 
+<script src="/js/common/jquery-1.8.3.min.js"></script>
 
-	
-<script>
+<style type="text/css">
+body{
+	width:100%;
+	height:900px;
+	margin:0 auto;
+	font-family:"LiSu";
+}
+#mybody{
+	width:1200px;
+	height:900px;
+	margin:0 auto;
+}
+#content{
+	width:100%;
 
-
-$(function() {
-
-		//省市联动
-		$("#selectLocation1").ProvinceCity();
-});
-
-//精准 搜索
-function serachRoad(){
-		var sheng = $("#serachRoad_sheng").val();
-		var shi = $("#serachRoad_shi").val();
-		var qu = $("#serachRoad_qu").val();
-		var local = $("#suggestId3").val();
-		var weizhi = sheng+"省"+shi+"市"+qu+local;
-		//alert(weizhi);
-		var myGeo = new BMap.Geocoder();
-		// 将地址解析结果显示在地图上,并调整地图视野
-		myGeo.getPoint(weizhi, function(point){
-			if (point) {
-				map.centerAndZoom(point, 16);
-				map.addOverlay(new BMap.Marker(point));
-			}else{
-				alert("您选择地址没有解析到结果!");
-			}
-		}, sheng);
+	float:left;
+	background:#3E3A39;
 }
 
 
 
+
+#imgRol{
+	width:100%;
+	float:left;
+	background:green;
+	text-align:center;
+}
+
+#run img{
+	width:100%;
+	display:none;
+	z-index:1;
+
+}
+#run_bt{
+	width:1200px;
+	height:30px;
+	position:absolute;
+	margin-top:-30px;
+	z-index:30;
+	
+	background-color:black;
+	
+
+}
+.show_img_index1{
+	margin-left:400px;
+}
+.show_img_index2{
+	margin-left:440px;
+}
+.show_img_index3{
+	margin-left:480px;
+}
+.show_img_index4{
+	margin-left:520px;
+}
+.show_img_index5{
+	margin-left:560px;
+}
+
+.show_img_index6{
+	margin-left:760px;
+	position:absolute;
+	color:#FFFFFF;
+	display:block;
+	height:30px;
+	line-height:30px;
+}
+.show_img_index6 a{
+	color:#FFFFFF;
+}
+
+
+.show_img_index_a a{
+	position:absolute;
+	color:#FFFFFF;
+	display:block;
+	width:30px;
+	height:30px;
+	line-height:30px;
+	
+}
+#showChart{
+	width:100%;
+	height:500px;
+	margin-top:30px;
+	float:left;
+	background:#3E3A39;
+	text-align:center;
+
+
+}
+
+</style>
+
+
+<script>
+function showImgIndex(indexs){
+	
+	//alert(indexs);
+	
+	for(var i=0;i<=4;i++){
+		if(indexs-1 == i){
+			$(".run1").eq(i).css("display","block"); 
+		}else{
+			$(".run1").eq(i).css("display","none"); 
+		}
+	}
+
+}
+
+var timeIndex = 0;
+function chvalue(){ 
+	if(timeIndex == 5){
+		timeIndex = 0;
+	} 
+	for(var i=0;i<=4;i++){
+			if(timeIndex == i){
+				$(".run1").eq(i).css("display","block"); 
+			}else{
+				$(".run1").eq(i).css("display","none"); 
+			}
+	}
+	timeIndex++;
+}  
+window.setInterval(chvalue, 2000);  
+
 </script>
-	
-	
+
 </head>
 <body>
-<div id="body">
-	<div id="top">
-		<div class="top_left"></div>
-		<div class="item1"><a href="">首 页</a></div>
-		<div class="item1"><a href="">新闻</a></div>
-		<div class="item1"><a href="">新 房</a></div>
-		<div class="item1"><a href="">二手房</a></div>
-		<div class="item1"><a href="">租房</a></div>
-		<div class="item1"><a href="">商铺</a></div>
-		<div class="item1"><a href="">写字楼</a></div>
-		<div class="item1"><a href="">海外地产</a></div>
-		<div class="item1"><a href="">楼讯</a></div>
-		<div class="item1"><a href="">出租</a></div>
-		<div class="item1"><a href="">求租</a></div>
-		<div class="item1"><a href="">出售</a></div>
-		<div class="item1"><a href="">求购</a></div>
-		<div class="item1"><a href="">留言板</a></div>
-		
+<div id="mybody" >
+<#include  "/top_menu.ftl" >
 
-		<div class="item2"><a href="${AppUrl}/background/login">经纪人登录</a></div>
-		<div class="item2"><a href="">用户登录</a></div>
-		<div class="item2"><a href="">注册 </a></div>
-	</div>
-	<div id="logo">
-		<div class="top_left"></div>
-		<div id="logo1"></div>
-		<div id="city">首页 > 杭州</div> 
-		<div id="search">
-			<form action="">
-				<input type="text"  	id="search_text" value="search" />
-				<input type="button" 	id="search_button" value="search" />
-			</form>
-		</div> 
-	</div>
-	
-	
-	
-	
-	
-	<div id="daohang">
-		<div id="daohang2">
-			<div data-role="none" id="selectLocation1">
-				<table>
-					<tr>
-						<td>区域：</td>
-						<td>选择省</td>
-						<td>
-							<select id="serachRoad_sheng" data-role="none" style='width:100px;height:25px;margin-left:20px;float:left;'></select>
-						</td>
-						<td>选择市</td>
-						<td>
-							<select id="serachRoad_shi" data-role="none" style='width:100px;height:25px;margin-left:20px;float:left;'></select>
-						</td>
-						<td>选择区</td>
-						<td>
-							<select id="serachRoad_qu"  data-role="none" style='width:100px;height:25px;margin-left:20px;float:left;'></select>
-						</td>
-						<td></td>
-						<td></td>
-						
-					</tr>
-					
-					<tr>
-						<td>租金：</td>
-						<td>最低价</td>
-						<td>
-							<select id="serachRoad_sheng" data-role="none" style='width:100px;height:25px;margin-left:20px;float:left;'>
-								<option value="0" > 0 </option>
-								<option value="300" > 300 </option>
-								<option value="500" > 500 </option>
-								<option value="600" > 600 </option>
-								<option value="700" > 700 </option>
-								<option value="800" > 800 </option>
-								<option value="900" > 900 </option>
-								<option value="1000" > 1000 </option>
-								<option value="1200" > 1200 </option>
-								<option value="1400" > 1400 </option>
-								<option value="1600" > 1600 </option>
-								<option value="1800" > 1800 </option>
-								<option value="2000" > 2000 </option>
-								<option value="2500" > 2500 </option>
-								<option value="3000" > 3000 </option>
-								<option value="3500" > 3500 </option>
-								<option value="4000" > 4000 </option>
-								<option value="5000" > 5000 </option>
-								<option value="6000" > 6000 </option>
-								<option value="7000" > 7000 </option>
-								<option value="10000" > 1万 </option>
-								<option value="20000" > 2万 </option>
-								<option value="60000" > 6万 </option>
-								<option value="100000" > 10万 </option>
-								<option value="200000" > 20万 </option>
-								<option value="300000" > 30万 </option>
-								<option value="500000" > 50万 </option>
-								<option value="1000000" > 100万 </option>
-								<option value="10000000" > 1000万 </option>
-							</select>
-						</td>
-						<td>最高价</td>
-						<td>
-							<select id="serachRoad_sheng" data-role="none" style='width:100px;height:25px;margin-left:20px;float:left;'>
-								<option value="0" > 不限 </option>
-								<option value="500" > 500 </option>
-								<option value="600" > 600 </option>
-								<option value="700" > 700 </option>
-								<option value="800" > 800 </option>
-								<option value="900" > 900 </option>
-								<option value="1000" > 1000 </option>
-								<option value="1200" > 1200 </option>
-								<option value="1400" > 1400 </option>
-								<option value="1600" > 1600 </option>
-								<option value="1800" > 1800 </option>
-								<option value="2000" > 2000 </option>
-								<option value="2500" > 2500 </option>
-								<option value="3000" > 3000 </option>
-								<option value="3500" > 3500 </option>
-								<option value="4000" > 4000 </option>
-								<option value="5000" > 5000 </option>
-								<option value="6000" > 6000 </option>
-								<option value="7000" > 7000 </option>
-								<option value="10000" > 1万 </option>
-								<option value="20000" > 2万 </option>
-								<option value="60000" > 6万 </option>
-								<option value="100000" > 10万 </option>
-								<option value="200000" > 20万 </option>
-								<option value="300000" > 30万 </option>
-								<option value="500000" > 50万 </option>
-								<option value="1000000" > 100万 </option>
-								<option value="10000000" > 1000万 </option>
-								<option value="1000000000" > 10亿 </option>
-							</select>
-						</td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					
-					
-					<tr>
-						<td>房型</td>
-						<td>家室个数</td>
-						<td>
-							<select id="serachRoad_sheng" data-role="none" style='width:100px;height:25px;margin-left:20px;float:left;'>
-								<option value="0" > 不限 </option>
-								<option value="1" > 一室 </option>
-								<option value="2" > 二室 </option>
-								<option value="3" > 三室 </option>
-								<option value="4" > 四室 </option>
-								<option value="5" > 五室 </option>
-								<option value="6" > 六室 </option>
-								<option value="7" > 六室以上 </option>
-							</select>
-						</td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td style="width:400px;" ></td>
-						<td>
-							<input type="button" 	id="search_button2" value="search" style="width:100px;background:orange;" />
-						</td>
-					</tr>
-					
-				</table>
-				
+
+<div id="content"   >
+
+	<div id="imgRol">
+		<div id="run" style="width:100%;background-color:red;float:left;">
+			<div>
+				<img src="/img/index/run1.png" style="display:block;" class="run1"/>
+				<img src="/img/index/run2.png"  class="run1"/>
+				<img src="/img/index/run3.png"  class="run1"/>
+				<img src="/img/index/run4.png"  class="run1"/>
+				<img src="/img/index/run5.png"  class="run1"/>
 			</div>
-			
-			
+			<div id="run_bt" >
+				<div class="show_img_index1 show_img_index_a"  ><a href="#" onMouseOver ="showImgIndex(1)">1</a></div>
+				<div class="show_img_index2 show_img_index_a" ><a href="#" onMouseOver ="showImgIndex(2)">2</a></div>
+				<div class="show_img_index3  show_img_index_a" ><a href="#" onMouseOver ="showImgIndex(3)">3</a></div>
+				<div class="show_img_index4  show_img_index_a" ><a href="#" onMouseOver ="showImgIndex(4)">4</a></div>
+				<div class="show_img_index5  show_img_index_a " ><a href="#" onMouseOver ="showImgIndex(5)">5</a></div>
+				
+				<div class="show_img_index6  " ><a href="#" >网站被访问了${clickCount?if_exists}次</a></div>
+			</div>
 		</div>
+	</div>
+	
+	<div id="showChart">
 		
-
+		<img alt="" src="${zhexianUrl?if_exists}"  style="width:98%;height:98%;" >
 	</div>
-	
-	
-	<div id="content"  src="www.ba" >
-			dsgvfsd ${AppUrl}
-	</div>
-	
 	
 </div>
 
+<#include  "/foot2.ftl" >
+<br/>
+
+<#include  "/foot.ftl" >
+</div>
 </body>
 </html>

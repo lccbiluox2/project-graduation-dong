@@ -65,7 +65,7 @@ $(function() {
 
 
 <ul>
-<form action="/rentController/addRent" method="post">
+<form action="/rentController/addRent" method="post" "  enctype="multipart/form-data">
 
 <li>房屋名称：<input type="text" name="h_name" /></li>
 <li>
@@ -85,20 +85,27 @@ $(function() {
 				<td>
 					<select id="serachRoad_qu" name="h_qu"   data-role="none" style='width:100px;height:25px;margin-left:20px;float:left;'></select>
 				</td>
+			</tr>
+			
+			<tr>
 				<td>备注地址</td>
-				<td><input type="text" name="h_address_detail" style='width:300px;' /></td>
-				
+				<td colspan="5"><input type="text" name="h_address_detail" style='width:400px;' /></td>
 			</tr>
 		</table>
 	</div>
 </li>
+<li>空间大小：<input type="text" name="h_space"/></li>
 <li>房屋价格：<input type="text" name="h_price"/></li>
 <li>房间个数：<input type="text" name="h_home_count"/></li>
-<li>房屋备注：<input type="text" name="h_beizhu"/></li>
-<li>描述：<textarea 			  name="h_desc" id="textarea" cols="100" rows="30"></textarea> </li>
+<li>房屋备注：
+	<textarea  name="h_beizhu"  cols="150" rows="10" ></textarea> 
+</li>
+<li>描述：
+	<textarea 	name="h_desc" id="textarea" cols="150" rows="30"></textarea>
+</li>
 <li>房屋电话：<input type="text" name="h_phone"/></li>
 <li>结束时间：<input type="date" name="h_end_time"/></li>
-<li>所在高度：<input type="text" name="h_hignt"/> </li>
+<li>所在高度：<input type="text" name="h_hight"/> </li>
 <li>是否为新房：
 	<input name="h_is_new" type="radio" value="1" >新房 </input>
 	<input name="h_is_new" type="radio" value="2" >旧房 </input>

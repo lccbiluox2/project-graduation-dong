@@ -15,6 +15,7 @@ public class UserTable extends  DomainBase{
 	private String 		user_passwd          ;
 	private String 		user_email           ;
 	private String 		user_phone           ;
+	private String 		group_code           ;
 	public int getId() {
 		return id;
 	}
@@ -45,10 +46,18 @@ public class UserTable extends  DomainBase{
 	public void setUser_phone(String user_phone) {
 		this.user_phone = user_phone;
 	}
+	
+	
+	public String getGroup_code() {
+		return group_code;
+	}
+	public void setGroup_code(String group_code) {
+		this.group_code = group_code;
+	}
 	@Override
 	public String toString() {
 		return "UserTable [id=" + id + ", user_name=" + user_name + ", user_passwd=" + user_passwd + ", user_email="
-				+ user_email + ", user_phone=" + user_phone + "]";
+				+ user_email + ", user_phone=" + user_phone + ", group_code=" + group_code + "]";
 	}
 	
 	

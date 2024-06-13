@@ -31,6 +31,61 @@ public class DateUtils {
   public static final String fullChineseFormat="yyyy年MM月dd日 HH时mm分ss秒";  
   public static final String [] WEEKS={"星期日","星期一","星期二","星期三","星期四","星期五","星期六"};  
     
+  
+  public static String getYear(){  
+		  Calendar now = Calendar.getInstance();  
+	      String year = now.get(Calendar.YEAR)+"";
+          return year;
+ }  
+
+  public static String getMonth(){  
+	  Calendar now = Calendar.getInstance();  
+      int  month = (now.get(Calendar.MONTH) + 1);
+      String myMonth = "";
+      if( month < 9){
+    	myMonth = "0"+month;
+      }else{
+    	myMonth = ""+month;
+      }
+      return myMonth;
+
+ }  
+  
+  
+  
+  public static String getDay(){  
+	  Calendar now = Calendar.getInstance();  
+      int  day = now.get(Calendar.DAY_OF_MONTH);
+      String  myday = "";
+      if( day < 9){
+    	myday = "0"+day;
+      }else{
+    	myday = ""+day;
+      }
+    
+      return myday;
+  }  
+  
+  /** 
+   * DateUtils.yyyyMMddFormat
+   * 得到当前时间的前一天的日期    
+   * @param date 指定的时间 
+   * @param format 时间日期格式 
+   * @return 
+*/  
+  public static String getYesterdayDateTime(String format){  
+	  	 Date date = new Date();
+		 Calendar calendar = Calendar.getInstance();
+		 calendar.setTime(date);
+		 calendar.add(Calendar.DAY_OF_MONTH, -1);
+		 date = calendar.getTime();
+		 
+		 System.out.println("------------读入的数据---------------------"+date);
+		 System.out.println(    ); 
+		 return  DateUtils.getFormatDateTime(date, format);  
+  }  
+  
+  
   /** 
    * 得到指定时间的时间日期格式 
    * @param date 指定的时间 

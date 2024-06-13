@@ -29,10 +29,18 @@ public class UserServiceImpl implements  UserService{
 	        //将数据存储到session中
 			//保存用戶名和密碼
 			session.setAttribute("admin", userByName);
+			
 			return true;
 		}else{
 			return false;
 		}
+	}
+
+
+	@Override
+	public void addUser(UserTable user) {
+		// TODO Auto-generated method stub
+		userDao.addUser(user);
 	}
 	
 	

@@ -20,10 +20,15 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	  @Override  
 	  public void addViewControllers(ViewControllerRegistry registry){  
 		  	
-		  //http://localhost:8080/springweb/background/login  访问这个直接跳转到后台登录页面
-	      registry.addViewController(MyConfig.APP_NAME_JAVA+"/background/login").setViewName("background/login"); 
+		  
+		  //跳转到admin登录页面
+	      registry.addViewController("/admin/adminLogin").setViewName("background/login"); 
+	      
 	      //跳转到添加出租信息页面
 	      registry.addViewController(MyConfig.APP_NAME_JAVA+"/rent/addRent").setViewName("background/rent/addRent"); 
+	      //跳转到添加新闻信息页面
+	      registry.addViewController("/newsController/toAddNewsPage").setViewName("background/news/addNews");
+	      
 	      
 	      
 	      
@@ -42,6 +47,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		   * 都不对
 		   */
 		registry.addResourceHandler("/upload/rent/**").addResourceLocations("/upload/rent/");
+		registry.addResourceHandler("/upload/news/**").addResourceLocations("/upload/news/");
         super.addResourceHandlers(registry);
      }
   

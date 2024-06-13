@@ -4,8 +4,13 @@ package com.neo.domain;
  * 房子出租  
  * 
  */
-public class RentTable {
+public class RentTable extends  DomainBase{
 		
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private int        id 				 	;  // 
 	private String     h_name 				;  // 房屋名称
 	private String     h_address 			;  // 房屋总体地址
@@ -13,35 +18,29 @@ public class RentTable {
 	private String     h_city 				;  // 房屋所在市
 	private String     h_qu 				;  // 房屋所在区
 	private String     h_address_detail 	;  // 房屋所在自定义的详细地址
-	private String     h_price 				;  // 房屋价格
-	private int        h_home_count 		;  // 房屋室内个数
+	private int        h_price 				;  // 房屋价格
+	private String     h_home_count 		;  // 房屋室内个数
 	private String     h_beizhu 			;  // 房屋备注
 	private String     h_desc 				;  // 描述
 	private String     h_phone				;  // 房屋电话
 	private String     h_create_time 		;  // 发布该条信息的时间
 	private String     h_end_time 			;  // 该条信息什么时候结束
-	private String     h_hignt 				;  // 房屋在地下室  一楼  高处 高度等
+	private String     h_hight 				;  // 房屋在地下室  一楼  高处 高度等
 	private int        h_is_new 			;  // 房屋是否是新的
-	private int        h_type 				;  // 房屋类型 1.新房 2 二手房  4 商铺 4 写字楼 
+	private int        h_type 				;  // 房屋类型 1.新房 2 二手房  3 商铺 4 写字楼  	旧房  新 房  二手房  写字楼	
 	private int        h_state 				;  // 房屋状态 1.在售 2.已出售 3撤销 4待定
 	private int        user_id 				;  // 发布该条信息人的id
 	private String     user_name 			;  // 发布该条信息人的name
 	private String     user_phone 			;  // 发布该条信息人的phone
 	private int        c_id 				;  // 评论的id
+	private String     h_pic 				;  // 房屋图片
+	private String     h_space 				;  // 房屋大小（平方米）
+	private String     h_small_pic			;  //房屋的缩略图
 	
 	
-	
-	
-	@Override
-	public String toString() {
-		return "RentTable [id=" + id + ", h_name=" + h_name + ", h_address=" + h_address + ", h_province=" + h_province
-				+ ", h_city=" + h_city + ", h_qu=" + h_qu + ", h_address_detail=" + h_address_detail + ", h_price="
-				+ h_price + ", h_home_count=" + h_home_count + ", h_beizhu=" + h_beizhu + ", h_desc=" + h_desc
-				+ ", h_phone=" + h_phone + ", h_create_time=" + h_create_time + ", h_end_time=" + h_end_time
-				+ ", h_hignt=" + h_hignt + ", h_is_new=" + h_is_new + ", h_type=" + h_type + ", h_state=" + h_state
-				+ ", user_id=" + user_id + ", user_name=" + user_name + ", user_phone=" + user_phone + ", c_id=" + c_id
-				+ "]";
-	}
+	//这两个字段不映射到数据库   只是查询的时候用
+	private int   minPrice;
+	private int   maxPrice;
 	public int getId() {
 		return id;
 	}
@@ -63,10 +62,10 @@ public class RentTable {
 	public String getH_address_detail() {
 		return h_address_detail;
 	}
-	public String getH_price() {
+	public int getH_price() {
 		return h_price;
 	}
-	public int getH_home_count() {
+	public String getH_home_count() {
 		return h_home_count;
 	}
 	public String getH_beizhu() {
@@ -84,8 +83,8 @@ public class RentTable {
 	public String getH_end_time() {
 		return h_end_time;
 	}
-	public String getH_hignt() {
-		return h_hignt;
+	public String getH_hight() {
+		return h_hight;
 	}
 	public int getH_is_new() {
 		return h_is_new;
@@ -108,6 +107,21 @@ public class RentTable {
 	public int getC_id() {
 		return c_id;
 	}
+	public String getH_pic() {
+		return h_pic;
+	}
+	public String getH_space() {
+		return h_space;
+	}
+	public String getH_small_pic() {
+		return h_small_pic;
+	}
+	public int getMinPrice() {
+		return minPrice;
+	}
+	public int getMaxPrice() {
+		return maxPrice;
+	}
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -129,10 +143,10 @@ public class RentTable {
 	public void setH_address_detail(String h_address_detail) {
 		this.h_address_detail = h_address_detail;
 	}
-	public void setH_price(String h_price) {
+	public void setH_price(int h_price) {
 		this.h_price = h_price;
 	}
-	public void setH_home_count(int h_home_count) {
+	public void setH_home_count(String h_home_count) {
 		this.h_home_count = h_home_count;
 	}
 	public void setH_beizhu(String h_beizhu) {
@@ -150,8 +164,8 @@ public class RentTable {
 	public void setH_end_time(String h_end_time) {
 		this.h_end_time = h_end_time;
 	}
-	public void setH_hignt(String h_hignt) {
-		this.h_hignt = h_hignt;
+	public void setH_hight(String h_hight) {
+		this.h_hight = h_hight;
 	}
 	public void setH_is_new(int h_is_new) {
 		this.h_is_new = h_is_new;
@@ -174,9 +188,23 @@ public class RentTable {
 	public void setC_id(int c_id) {
 		this.c_id = c_id;
 	}
+	public void setH_pic(String h_pic) {
+		this.h_pic = h_pic;
+	}
+	public void setH_space(String h_space) {
+		this.h_space = h_space;
+	}
+	public void setH_small_pic(String h_small_pic) {
+		this.h_small_pic = h_small_pic;
+	}
+	public void setMinPrice(int minPrice) {
+		this.minPrice = minPrice;
+	}
+	public void setMaxPrice(int maxPrice) {
+		this.maxPrice = maxPrice;
+	}
 	
 	
-	
-	
+
 	
 }

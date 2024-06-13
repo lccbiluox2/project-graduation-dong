@@ -82,7 +82,7 @@ function adminLogin(){
 	var adminName = $("#adminName").val();
 	var adminPasswd = $("#adminPasswd").val();
 	$.ajax( {  
-      url:AppUrl_js+'/admin/adminLogin',// 跳转到 action  addUser
+      url:AppUrl_js+'/userController/adminLogin',// 跳转到 action  addUser
       data:{
 		"user_name":adminName,
 		"user_passwd":adminPasswd
@@ -96,7 +96,7 @@ function adminLogin(){
      success:function(data) {  
         //alert("返回数据--"+data);
 		if(data == "1"){
-			location.href = AppUrl_js+"/admin/index";
+			location.href = AppUrl_js+"/userController/index";
 		}else if(data == "2"){
 			alert("登录出错");
 		}

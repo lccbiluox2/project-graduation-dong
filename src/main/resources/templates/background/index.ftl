@@ -20,7 +20,7 @@
 			<li><a href=""><#-- ${user.user_name?if_exists } --></a></li>
 			<li><a href="">修改密码</a></li>
 			<li><a href="">设置</a></li>
-			<li><a href="">退出</a></li>
+			<li><a href="/userController/loginOut">退出</a></li>
 		</ul>
 	</div>
 </div>
@@ -37,7 +37,7 @@
           <h4 class="M2"><span></span>出租信息</h4>
           <div class="list-item none">
             <a href='${AppUrl}/rent/addRent' target="myview">添加出租信息</a>
-            <a href='showAllProduct.html' target="myview">查看出租信息</a>
+            <a href='/rentController/getAllRentByUser' target="myview">查看出租信息</a>
            </div>
         </li>
         <li>
@@ -64,15 +64,14 @@
 				<li>
           <h4  class="M6"><span></span>留言板</h4>
           <div class="list-item none">
-            	 <a href=''>查看留言信息</a>
-           		 <a href=''>添加留言信息</a>
+            	 <a href='/messageController/showAllMessage?currentPage=0' target="myview">查看留言信息</a>
           </div>
         </li>
 		<li>
           <h4  class="M7"><span></span>新闻中心</h4>
           <div class="list-item none">
-            <a href=''>添加新闻</a>
-            <a href=''>查看新闻</a>
+            <a href='/newsController/toAddNewsPage' target="myview" >添加新闻</a>
+            <a href='/newsController/getAllNewsByUser' target="myview" >查看新闻</a>
       
           </div>
         </li>
@@ -87,7 +86,7 @@
 		<li>
           <h4   class="M9"><span></span>系统管理</h4>
           <div class="list-item none">
-            <a href=''>退出系统</a>
+            <a href='/userController/loginOut'>退出系统</a>
           </div>
         </li>
   </ul>

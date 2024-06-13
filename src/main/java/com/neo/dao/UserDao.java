@@ -10,13 +10,16 @@ public interface UserDao {
 
 	UserTable getOne(Long id);
 
-    void insert(UserTable user);
 
     void update(UserTable user);
 
     void delete(Long id);
 
 	UserTable getUserByName(String user_name);
+
+	void addUser(UserTable user);
+
+	
 	
 	
 }
